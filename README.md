@@ -1,78 +1,141 @@
+
+
 # ToDo API
 
-This project is a minimal API for managing a to-do list, allowing users to perform CRUD operations (Create, Read, Update, Delete) on tasks. The API is secured using JWT Authentication, and CORS is enabled to allow cross-origin requests.
+A minimal API for managing a to-do list, allowing users to perform CRUD operations (Create, Read, Update, Delete) on tasks. The API is secured using **JWT Authentication**, and **CORS** is enabled to allow cross-origin requests.
 
-## Routes
+---
 
-1. **GET /tasks** - Retrieve all tasks (requires JWT authentication).
-2. **POST /tasks** - Create a new task (requires JWT authentication).
-3. **PUT /tasks/{id}** - Update an existing task (requires JWT authentication).
-4. **DELETE /tasks/{id}** - Delete a task (requires JWT authentication).
+## Features
+
+- **JWT Authentication** for secure access to endpoints.
+- CRUD operations for managing tasks.
+- **CORS** support for cross-origin requests.
+- Uses **MySQL** as the database.
+
+---
+
+## Endpoints
+
+### Task Management
+
+| HTTP Method | Route             | Description               | Auth Required |
+|-------------|-------------------|---------------------------|---------------|
+| **GET**     | `/tasks`          | Retrieve all tasks        | ✅             |
+| **POST**    | `/tasks`          | Add a new task            | ✅             |
+| **PUT**     | `/tasks/{id}`     | Update an existing task   | ✅             |
+| **DELETE**  | `/tasks/{id}`     | Delete a task by ID       | ✅             |
+
+---
 
 ## Getting Started
 
 ### Prerequisites
 
-- .NET SDK (6.0 or higher)
-- MySQL database
+- **.NET 6.0 SDK** or higher
+- **MySQL** database
+- **Postman** or any API testing tool (optional)
+
+---
 
 ### Installation
 
-1. Clone the repository:
+1. **Clone the Repository**:
    ```bash
    git clone https://github.com/yourusername/todo-api.git
    cd todo-api
-Install the dependencies:
+   ```
 
-bash
-Copy code
-dotnet restore
-Set up your database connection string in appsettings.json:
+2. **Install Dependencies**:
+   ```bash
+   dotnet restore
+   ```
 
-json
-Copy code
-{
-    "ConnectionStrings": {
-        "ToDoDB": "server=localhost;database=todo;user=root;password=yourpassword"
-    }
-}
-Run the application:
+3. **Set Up the Database**:
+   Update the `appsettings.json` file with your MySQL connection string:
+   ```json
+   {
+       "ConnectionStrings": {
+           "ToDoDB": "server=localhost;database=todo;user=root;password=yourpassword"
+       }
+   }
+   ```
 
-bash
-Copy code
-dotnet watch run
-API Endpoints
-1. GET /tasks
-Retrieve all tasks from the database.
-Requires JWT token for authentication.
-2. POST /tasks
-Add a new task to the database.
-Requires JWT token for authentication.
-Example request body:
-json
-Copy code
-{
-    "name": "Task Name",
-    "isComplete": false
-}
-3. PUT /tasks/{id}
-Update an existing task by ID.
-Requires JWT token for authentication.
-Example request body:
-json
-Copy code
-{
-    "name": "Updated Task Name",
-    "isComplete": true
-}
-4. DELETE /tasks/{id}
-Delete a task by ID.
-Requires JWT token for authentication.
-Authentication
-The API uses JWT for user authentication. To get a token, you can use the /login and /register endpoints (not shown here, but similar to the example you provided).
+4. **Run the Application**:
+   ```bash
+   dotnet watch run
+   ```
 
-CORS
-CORS is enabled to allow any origin to access the API, which is useful during development when your frontend is on a different port.
+---
 
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
+## Request Examples
+
+### Authentication
+The API uses **JWT** for authentication. Obtain a token by using the `/register` or `/login` endpoints.
+
+---
+
+### CRUD Operations
+
+#### **GET /tasks**
+- Retrieves all tasks from the database.
+- **Headers**:
+  ```
+  Authorization: Bearer <your-jwt-token>
+  ```
+
+#### **POST /tasks**
+- Adds a new task.
+- **Headers**:
+  ```
+  Authorization: Bearer <your-jwt-token>
+  ```
+- **Body** (JSON):
+  ```json
+  {
+      "name": "Task Name",
+      "isComplete": false
+  }
+  ```
+
+#### **PUT /tasks/{id}**
+- Updates an existing task by ID.
+- **Headers**:
+  ```
+  Authorization: Bearer <your-jwt-token>
+  ```
+- **Body** (JSON):
+  ```json
+  {
+      "name": "Updated Task Name",
+      "isComplete": true
+  }
+  ```
+
+#### **DELETE /tasks/{id}**
+- Deletes a task by ID.
+- **Headers**:
+  ```
+  Authorization: Bearer <your-jwt-token>
+  ```
+
+---
+
+## Additional Features
+
+### **CORS Support**
+CORS is enabled to allow any origin to access the API. This is useful during development when your frontend and backend are hosted on different ports.
+
+---
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+### Notes
+
+- This project includes Swagger for API documentation. You can access it at `/swagger` once the application is running.
+- For the frontend, refer to [ToDo List React Client](https://github.com/malbruk/ToDoListReact) and update the API URL in `service.js`.
+
