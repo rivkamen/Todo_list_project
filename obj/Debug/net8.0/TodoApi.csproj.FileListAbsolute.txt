@@ -140,3 +140,4 @@ C:\Users\1\Documents\רבקה\לימודים\פרקטיקוד\ToDo List\TodoApi\
 C:\Users\1\Documents\רבקה\לימודים\פרקטיקוד\ToDo List\TodoApi\bin\Debug\net8.0\ToDoListReact\package.json
 C:\Users\1\Documents\רבקה\לימודים\פרקטיקוד\ToDo List\TodoApi\bin\Debug\net8.0\BCrypt.Net-Next.dll
 C:\Users\1\Documents\רבקה\לימודים\פרקטיקוד\ToDo List\TodoApi\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\1\Documents\רבקה\לימודים\פרקטיקוד\ToDo List\TodoApi\obj\Debug\net8.0\TodoApi.sourcelink.json
