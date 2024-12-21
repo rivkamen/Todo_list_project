@@ -134,7 +134,7 @@ axios.interceptors.response.use(
 );
 
 // אם יש JWT ב-localStorage, הוסף אותו ל-header של כל בקשה
-const token = localStorage.getItem('token');
+const token = sessionStorage.getItem('token');
 if (token) {
   axios.defaults.headers['Authorization'] = `Bearer ${token}`;
 }
