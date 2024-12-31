@@ -131,9 +131,24 @@ app.MapPost("/register", async (User registerRequest, ToDoDbContext dbContext) =
 
     return Results.Ok("User registered successfully.");
 });
-app.MapGet("/", async (ToDoDbContext dbContext) =>
+// app.MapGet("/", async (ToDoDbContext dbContext) =>
+// {
+//     var tasks = await dbContext.Items.ToListAsync();
+//     return Results.Json(tasks);
+// });
+
+app.MapGet("/", /*[Microsoft.AspNetCore.Authorization.Authorize]*/ async (ToDoDbContext dbContext) =>
 {
+    // Fetch all items from the database
     var tasks = await dbContext.Items.ToListAsync();
+
+    // Check if the list is empty
+    if (tasks == null || tasks.Count == 0)
+    {
+        return Results.NotFound("No items found in the database.");
+    }
+
+    // Return the tasks as JSON
     return Results.Json(tasks);
 });
 
