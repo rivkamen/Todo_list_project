@@ -65,11 +65,11 @@ app.UseCors();
 app.UseAuthentication(); // Enable JWT Authentication
 app.UseAuthorization();  // Enable Authorization Middleware
 
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+//}
 
 // Route to Get All Tasks
 
@@ -77,7 +77,6 @@ if (app.Environment.IsDevelopment())
 // Login Endpoint
 app.MapPost("/login", async (User loginRequest, ToDoDbContext dbContext) =>
 {
-    System.Console.WriteLine("helloo@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2");
     var user = await dbContext.Users.SingleOrDefaultAsync(u => u.Username == loginRequest.Username);
     if (user == null || !BCrypt.Net.BCrypt.Verify(loginRequest.Password, user.Password))
     {
@@ -107,7 +106,6 @@ app.MapPost("/login", async (User loginRequest, ToDoDbContext dbContext) =>
 // Register Endpoint
 app.MapPost("/register", async (User registerRequest, ToDoDbContext dbContext) =>
 {
-        System.Console.WriteLine("hoooooo@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2");
 
     if (string.IsNullOrEmpty(registerRequest.Username) || string.IsNullOrEmpty(registerRequest.Password))
     {
