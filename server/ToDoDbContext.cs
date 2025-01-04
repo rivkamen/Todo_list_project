@@ -65,6 +65,8 @@ public partial class ToDoDbContext : DbContext
 {
     Console.WriteLine("OnConfiguring is being called"); // לוג פשוט
     optionsBuilder.UseMySql("name=ToDodb", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.40-mysql"));
+        Console.WriteLine("success"); // לוג פשוט
+
 }
 
     // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
