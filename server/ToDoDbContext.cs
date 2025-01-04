@@ -63,9 +63,22 @@ public partial class ToDoDbContext : DbContext
     // הגדרת חיבור למסד הנתונים
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 {
-    Console.WriteLine("OnConfiguring is being called"); // לוג פשוט
-    optionsBuilder.UseMySql("name=ToDodb", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.40-mysql"));
-        Console.WriteLine("success"); // לוג פשוט
+    // Console.WriteLine("OnConfiguring is being called"); // לוג פשוט
+    // optionsBuilder.UseMySql("name=ToDodb", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.40-mysql"));
+    //     Console.WriteLine("success"); // לוג פשוט
+
+
+    try
+{
+    using var context = new ToDoDbContext();
+    await context.Database.EnsureCreatedAsync(); // Ensures the database is created
+    Console.WriteLine("Database connection successful!");
+}
+catch (Exception ex)
+{
+    Console.WriteLine($"Database connection failed: {ex.Message}");
+}
+
 
 }
 
