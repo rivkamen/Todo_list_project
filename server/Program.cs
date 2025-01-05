@@ -27,12 +27,12 @@ builder.Services.AddCors(options =>
 });
 
 // Get the connection string from app configuration
-try{
+
 var connectionString = builder.Configuration.GetConnectionString("ToDoDB");
-}
-catch(error){
+
+
     console.writeline("error:" + error);
-}
+
 if (string.IsNullOrEmpty(connectionString))
 {
     Console.WriteLine("Connection string is missing!");
