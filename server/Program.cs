@@ -37,9 +37,15 @@ if (string.IsNullOrEmpty(connectionString))
     Console.WriteLine("Connection string is missing!");
     return;
 }
-
+try
+{
 builder.Services.AddDbContext<ToDoDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+}
+catch (Exception ex)
+{
+    Console.WriteLine($"שגיאה: {ex.Message}");
+}
 
 // Retrieve the JWT Secret key from the configuration
 string secretKey = builder.Configuration["JWT:SecretKey"] ?? throw new ArgumentNullException("JWT:SecretKey is missing");
