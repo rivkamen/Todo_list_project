@@ -31,7 +31,6 @@ builder.Services.AddCors(options =>
 var connectionString = builder.Configuration.GetConnectionString("ToDoDB");
 
 
-    Console.WriteLine("error:" + error);
 
 if (string.IsNullOrEmpty(connectionString))
 {
