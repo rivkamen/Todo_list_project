@@ -68,9 +68,9 @@ public partial class ToDoDbContext : DbContext
 
     try
 {
-      optionsBuilder.UseMySql("name=ToDodb", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.40-mysql"));
-              Console.WriteLine("success"); // לוג פשוט
-
+    var connectionString = Configuration.GetConnectionString("ToDoDB");
+    optionsBuilder.UseMySql(connectionString, Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.40-mysql"));
+    Console.WriteLine("success");
 }
 catch (Exception ex)
 {
