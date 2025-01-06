@@ -118,6 +118,11 @@
 
 //     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 // }
+// // ﻿using System;
+ using System.Collections.Generic;
+// // using Microsoft.EntityFrameworkCore;
+ using Pomelo.EntityFrameworkCore.MySql.Scaffolding.Internal;
+
 using System;
 using Microsoft.EntityFrameworkCore;
 
