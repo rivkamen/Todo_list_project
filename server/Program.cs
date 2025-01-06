@@ -41,7 +41,7 @@ try
 {
     builder.Services.AddDbContext<ToDoDbContext>(options =>
     options.UseMySql(
-        builder.Configuration.GetConnectionString("ToDoDB"),
+        "Server=bd2ivxjpmx5a7gpoxc5j-mysql.services.clever-cloud.com;User=uyb9xnwwuyygrbpc;Password=crvceLArTRBtAmA8rhKG;Database=bd2ivxjpmx5a7gpoxc5j",
         Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.40-mysql")
     )
 );
