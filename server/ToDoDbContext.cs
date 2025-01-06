@@ -75,6 +75,7 @@ public partial class ToDoDbContext : DbContext
 catch (Exception ex)
 {
     Console.WriteLine($"Database connection failed: {ex.Message}");
+    Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 }
 
 
