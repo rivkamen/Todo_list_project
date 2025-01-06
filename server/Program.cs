@@ -47,6 +47,7 @@ catch (Exception ex)
     Console.WriteLine($"שגיאה: {ex.Message}");
 }
 
+
 // Retrieve the JWT Secret key from the configuration
 string secretKey = builder.Configuration["JWT:SecretKey"] ?? throw new ArgumentNullException("JWT:SecretKey is missing");
 
