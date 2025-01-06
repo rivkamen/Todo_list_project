@@ -177,18 +177,4 @@ namespace TodoApi
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 
-    // Example User class
-    public class User
-    {
-        public int Id { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-    }
-
-    // Example Item class
-    public class Item
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-    }
-}
+    
