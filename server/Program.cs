@@ -11,6 +11,11 @@ using TodoApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var connectionString = "Server=bd2ivxjpmx5a7gpoxc5j-mysql.services.clever-cloud.com;User=uyb9xnwwuyygrbpc;Password=crvceLArTRBtAmA8rhKG;Database=bd2ivxjpmx5a7gpoxc5j;";
+
+
+
+
 // Add services to the container
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -39,12 +44,15 @@ if (string.IsNullOrEmpty(connectionString))
 }
 try
 {
-    builder.Services.AddDbContext<ToDoDbContext>(options =>
-    options.UseMySql(
-        "Server=bd2ivxjpmx5a7gpoxc5j-mysql.services.clever-cloud.com;User=uyb9xnwwuyygrbpc;Password=crvceLArTRBtAmA8rhKG;Database=bd2ivxjpmx5a7gpoxc5j",
-        Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.40-mysql")
-    )
-);
+//     builder.Services.AddDbContext<ToDoDbContext>(options =>
+//     options.UseMySql(
+//         "Server=bd2ivxjpmx5a7gpoxc5j-mysql.services.clever-cloud.com;User=uyb9xnwwuyygrbpc;Password=crvceLArTRBtAmA8rhKG;Database=bd2ivxjpmx5a7gpoxc5j",
+//         Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.40-mysql")
+//     )
+// );
+// Add the DbContext with the connection string
+builder.Services.AddDbContext<TodoDbContext>(options =>
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 // builder.Services.AddDbContext<ToDoDbContext>(options =>
 //     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
