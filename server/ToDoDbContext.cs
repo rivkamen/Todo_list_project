@@ -68,7 +68,7 @@ public partial class ToDoDbContext : DbContext
 
     try
 {
-    var connectionString = "Server=bd2ivxjpmx5a7gpoxc5j-mysql.services.clever-cloud.com;User=uyb9xnwwuyygrbpc;Password=crvceLArTRBtAmA8rhKG;Database=bd2ivxjpmx5a7gpoxc5j;"//Configuration.GetConnectionString("ToDoDB");
+    var connectionString = "Server=bd2ivxjpmx5a7gpoxc5j-mysql.services.clever-cloud.com;User=uyb9xnwwuyygrbpc;Password=crvceLArTRBtAmA8rhKG;Database=bd2ivxjpmx5a7gpoxc5j;";//Configuration.GetConnectionString("ToDoDB");
     optionsBuilder.UseMySql(connectionString, Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.40-mysql"));
     Console.WriteLine("success");
 }
