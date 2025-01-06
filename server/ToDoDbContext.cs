@@ -176,5 +176,6 @@ namespace TodoApi
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
+    }
 
     
