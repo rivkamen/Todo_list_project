@@ -28,7 +28,7 @@ builder.Services.AddCors(options =>
 
 // Get the connection string from app configuration
 
-var connectionString = builder.Configuration.GetConnectionString("ToDoDB");
+// var connectionString = builder.Configuration.GetConnectionString("ToDoDB");
 
 
 
@@ -39,8 +39,15 @@ if (string.IsNullOrEmpty(connectionString))
 }
 try
 {
-builder.Services.AddDbContext<ToDoDbContext>(options =>
-    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+    builder.Services.AddDbContext<ToDoDbContext>(options =>
+    options.UseMySql(
+        builder.Configuration.GetConnectionString("ToDoDB"),
+        Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.40-mysql")
+    )
+);
+
+// builder.Services.AddDbContext<ToDoDbContext>(options =>
+//     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 }
 catch (Exception ex)
 {
