@@ -565,15 +565,11 @@ app.MapPost("/register", async (User registerRequest, ToDoDbContext dbContext) =
 });
 app.MapGet("/",async (ToDoDbContext dbContext) =>
 {
-    try{
+    
     Console.WriteLine("get functionnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn")
     var tasks = await dbContext.Items.ToListAsync();
-    return Results.Json(tasks);}
-    catch(Exception ex){
-         Console.WriteLine("faild")
-         Console.WriteLine(ex)
-   
-    }
+    return Results.Json(tasks);
+  
 });
 
 // Route to Add New Task
