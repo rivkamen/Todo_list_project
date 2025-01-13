@@ -8,7 +8,7 @@ using TodoApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//var connectionString = "Server=bd2ivxjpmx5a7gpoxc5j-mysql.services.clever-cloud.com;User=uyb9xnwwuyygrbpc;Password=crvceLArTRBtAmA8rhKG;Database=bd2ivxjpmx5a7gpoxc5j;";
+//var connectionString = "Server=bujkixbbtsdssxnmdyuu-mysql.services.clever-cloud.com;User=uftyv7t4ctoqb2rx;Password=tC6pwbqLIWAI1c7MSb88;Database=bujkixbbtsdssxnmdyuu;";
 // Add services to the container
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -39,7 +39,7 @@ try
 {
 //     builder.Services.AddDbContext<ToDoDbContext>(options =>
 //     options.UseMySql(
-//         "Server=bd2ivxjpmx5a7gpoxc5j-mysql.services.clever-cloud.com;User=uyb9xnwwuyygrbpc;Password=crvceLArTRBtAmA8rhKG;Database=bd2ivxjpmx5a7gpoxc5j;",
+//         "Server=bd2ivxjpmx5a7gpoxc5j-mysql.services.clever-cloud.com;User=uyb9xnwwuyygrbpc;Password=crvceLArTRBtAmA8rhKG;Database=bd2ivxjpmx5a7gpoxc5j",
 //         Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.40-mysql")
 //     )
 // );
