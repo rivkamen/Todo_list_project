@@ -170,7 +170,7 @@ app.MapGet("/", /*[Microsoft.AspNetCore.Authorization.Authorize]*/ async (ToDoDb
 });
 
 // Route to Add New Task
-app.MapPost("/",/* [Microsoft.AspNetCore.Authorization.Authorize]*/ async (ToDoDbContext dbContext, Item newItem) =>
+app.MapPost("/", [Microsoft.AspNetCore.Authorization.Authorize] async (ToDoDbContext dbContext, Item newItem) =>
 {
     dbContext.Items.Add(newItem);
     await dbContext.SaveChangesAsync();
