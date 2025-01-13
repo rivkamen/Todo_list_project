@@ -39,7 +39,7 @@ try
 {
 //     builder.Services.AddDbContext<ToDoDbContext>(options =>
 //     options.UseMySql(
-//         "Server=bd2ivxjpmx5a7gpoxc5j-mysql.services.clever-cloud.com;User=uyb9xnwwuyygrbpc;Password=crvceLArTRBtAmA8rhKG;Database=bd2ivxjpmx5a7gpoxc5j",
+//         "Server=bd2ivxjpmx5a7gpoxc5j-mysql.services.clever-cloud.com;User=uyb9xnwwuyygrbpc;Password=crvceLArTRBtAmA8rhKG;Database=bd2ivxjpmx5a7gpoxc5j;",
 //         Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.40-mysql")
 //     )
 // );
@@ -170,7 +170,7 @@ app.MapGet("/", /*[Microsoft.AspNetCore.Authorization.Authorize]*/ async (ToDoDb
 });
 
 // Route to Add New Task
-app.MapPost("/", /*[Microsoft.AspNetCore.Authorization.Authorize]*/ async (ToDoDbContext dbContext, Item newItem) =>
+app.MapPost("/", [Microsoft.AspNetCore.Authorization.Authorize] async (ToDoDbContext dbContext, Item newItem) =>
 {
     dbContext.Items.Add(newItem);
     await dbContext.SaveChangesAsync();
@@ -178,7 +178,7 @@ app.MapPost("/", /*[Microsoft.AspNetCore.Authorization.Authorize]*/ async (ToDoD
 });
 
 // Route to Update a Task
-app.MapPut("/{id}", /*[Microsoft.AspNetCore.Authorization.Authorize]*/ async (int id, ToDoDbContext dbContext, Item updatedItem) =>
+app.MapPut("/{id}", [Microsoft.AspNetCore.Authorization.Authorize] async (int id, ToDoDbContext dbContext, Item updatedItem) =>
 {
     var item = await dbContext.Items.FindAsync(id);
     if (item == null)
@@ -186,14 +186,17 @@ app.MapPut("/{id}", /*[Microsoft.AspNetCore.Authorization.Authorize]*/ async (in
         return Results.NotFound("Item not found.");
     }
 
-    if (!string.IsNullOrEmpty(updatedItem.Name)) item.Name = updatedItem.Name;
-    item.IsComplete = updatedItem.IsComplete;
-    await dbContext.SaveChangesAsync();
+    if (!string.IsNullOrEmpty(updatedItem.Name))
+        item.Name = updatedItem.Name;
+        item.IsComplete = updatedItem.IsComplete;
+        await dbContext.SaveChangesAsync();
+  
     return Results.Json(item);
+    
 });
 
 // Route to Delete a Task
-app.MapDelete("/{id}", /*[Microsoft.AspNetCore.Authorization.Authorize]*/ async (int id, ToDoDbContext dbContext) =>
+app.MapDelete("/{id}", [Microsoft.AspNetCore.Authorization.Authorize]   async (int id, ToDoDbContext dbContext) =>
 {
     var item = await dbContext.Items.FindAsync(id);
     if (item == null)
