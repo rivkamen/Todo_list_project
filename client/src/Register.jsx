@@ -12,7 +12,7 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      await axios.post('http://localhost:5206/register', {
+      await axios.post(process.env.REACT_APP_API_URL, {
         username,
         password,
       });
