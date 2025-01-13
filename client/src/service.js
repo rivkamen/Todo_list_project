@@ -33,6 +33,7 @@ console.log(apiUrl);
 export default {
   getTasks: async () => {
     try {
+      console.log(apiUrl);
       const result = await axios.get(`${apiUrl}`);
       return result.data;
     } catch (error) {
