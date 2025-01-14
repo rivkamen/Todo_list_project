@@ -26,7 +26,7 @@ builder.Services.AddCors(options =>
 
 // Get the connection string from app configuration
 
- var connectionString = builder.Configuration.GetConnectionString("ToDoDB");
+var connectionString = Environment.GetEnvironmentVariable("ToDoDB");
 
 
 
