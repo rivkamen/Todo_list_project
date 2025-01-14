@@ -14,7 +14,11 @@ axios.interceptors.response.use(
     console.error('API Error:', error.response || error.message);
     if (error.response && error.response.status === 401) {
       // אם השגיאה היא 401, הפנה לדף התחברות
+      console.log(window.location);
+
       window.location.href = '/login'; // לדף התחברות
+            console.log(window.location.href);
+
     }
     return Promise.reject(error); // מחזירים את השגיאה הלאה
   }
