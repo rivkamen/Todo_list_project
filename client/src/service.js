@@ -58,7 +58,7 @@ export default {
 
   setCompleted: async (id, isComplete) => {
     try {
-      await axios.put(`${apiUrl}${id}`, { isComplete: isComplete });
+      await axios.put(`${apiUrl}/${id}`, { isComplete: isComplete });
     } catch (error) {
       console.error("Error updating task:", error);
       throw error; // טיפול בשגיאה
@@ -67,7 +67,7 @@ export default {
 
   deleteTask: async (id) => {
     try {
-      await axios.delete(`${apiUrl}${id}`);
+      await axios.delete(`${apiUrl}/${id}`);
     } catch (error) {
       console.error("Error deleting task:", error);
       throw error; // טיפול בשגיאה
