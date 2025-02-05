@@ -18,7 +18,7 @@ const Login = () => {
         username,
         password,
       });
-Console.WriteLine(response);
+console.log(response);
       // Save the JWT token in localStorage
       sessionStorage.setItem('token', response.data.token);
 
